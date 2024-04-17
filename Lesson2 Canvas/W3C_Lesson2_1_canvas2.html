@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <canvas
+      id="myCanvas_red"
+      width="200"
+      height="100"
+      style="border: 1px solid #c3c3c3"
+    >
+      no Canvas supported
+    </canvas>
+    <canvas
+      id="myCanvas_gradient_vertix"
+      width="200"
+      height="100"
+      style="border: 1px solid #d3d3d3"
+    >
+      no Canvas supported
+    </canvas>
+    <canvas
+      id="myCanvas_line"
+      width="200"
+      height="100"
+      style="border: 1px solid #c3c3c3"
+    >
+      no Canvas supported
+    </canvas>
+    <canvas
+      id="myCanvas_circle"
+      width="200"
+      height="100"
+      style="border: 1px solid #c3c3c3"
+    >
+      no Canvas supported
+    </canvas>
+    <canvas
+      id="myCanvas_text"
+      width="200"
+      height="100"
+      style="border: 1px solid #c3c3c3"
+    >
+      no Canvas supported
+    </canvas>
+    <p>Image to use:</p>
+    <img id="scream" src="/Users/lawrenceli/Desktop/2024_OfferGet/前端给我冲/HTML5/Lesson2 Canvas/scream.jpeg" alt="The Scream" >
+    <p>Canvas:</p>
+    <canvas
+      id="myCanvas_image"
+      width="400"
+      height="200"
+      style="border: 1px solid #c3c3c3"
+    >
+      no Canvas supported
+    </canvas>
+    <script>
+      //找到canvas
+      var c = document.getElementById("myCanvas_red");
+      //必须通过该函数调用context
+      var ctx = c.getContext("2d");
+      //fillStyle属性设置或返回用于填充绘画的颜色、渐变或模式
+      ctx.fillStyle = "#FF0000";
+      //定义大小，前两个参数为起点坐标，这里是（0,0),后参数是长和宽
+      ctx.fillRect(0, 0, 150, 75);
+    </script>
+    <script>
+      var c = document.getElementById("myCanvas_gradient_vertix");
+      var ctx = c.getContext("2d");
+      //创建渐变，渐变起点为(0,0)，渐变终点为(0,170)
+      var my_grdient = ctx.createLinearGradient(0, 0, 0, 170);
+      //创建色点，0为起点，1为终点，其他的比例区域也可以定义颜色，如0.5等
+      my_grdient.addColorStop(0, "black");
+      my_grdient.addColorStop(1, "white");
+      ctx.fillStyle = my_grdient;
+      ctx.fillRect(0, 0, 150, 75);
+      //圆渐变为ctx.createRadialGradient(75,50,5,90,60,100);x1,y1,r1为开始渐变时的圆,x2,y2,r2为结束渐变时的圆。
+    </script>
+    <script>
+      var c = document.getElementById("myCanvas_line");
+      var ctx = c.getContext("2d");
+      //起点
+      ctx.moveTo(0, 0);
+      //终点
+      ctx.lineTo(200, 100);
+      //绘制线条
+      ctx.stroke();
+    </script>
+    <script>
+      var c = document.getElementById("myCanvas_circle");
+      var ctx = c.getContext("2d");
+      ctx.beginPath();
+      //(x,y,r,start,stop)
+      ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+      //定义填充颜色
+      ctx.fillStyle = "red";
+      ctx.fill();
+      ctx.stroke();
+    </script>
+    <script>
+      var c = document.getElementById("myCanvas_text");
+      var ctx = c.getContext("2d")
+      ctx.font = "30px Arial";
+      //实习文字，空心为strokeText
+      ctx.fillText("Hello World",10,50)
+    </script>
+    <script>
+        var c = document.getElementById("myCanvas_image");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("scream");
+        img.onload = function(){
+            ctx.drawImage(img,10,10);
+        }
+    </script>
+  </body>
+</html>
