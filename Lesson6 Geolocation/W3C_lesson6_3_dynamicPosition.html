@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p id="demo">点击按钮获取坐标</p>
+    <button onclick="getLocation()">点击获取</button>
+    <p id="result"></p>
+    <script>
+        var x = document.getElementById("result");
+        function getLocation(){
+            if(navigator.geolocation){
+                navigator.geolocation.watchPosition(showPosition);
+            }
+        }
+        function showPosition(position){
+            x.innerHTML = "纬度: " + position.coords.latitude +
+            "<br>经度: " + position.coords.longitude;
+        }
+    </script>
+  </body>
+</html>

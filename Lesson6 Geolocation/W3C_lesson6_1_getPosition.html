@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>获取定位</title>
+  </head>
+  <body>
+    <p id="demo">点击按钮获取您当前坐标(可能需要较长时间获取)</p>
+    <button onclick="getLocation()">点击获取</button>
+    <p id="result"></p>
+    <script>
+      var x = document.getElementById("result");
+      function getLocation(){
+        if(navigator.geolocation){
+            //可支持两个函数，一个是成功获取后的函数，一个是失败的函数。分别会自动传递postion和error这两个参数。
+            navigator.geolocation.getCurrentPosition(showPosition,showError);
+        }
+        else{
+            x.innerHTML = "No Geolocation supported";
+        }
+      }
+      function showPosition(position){
+        x.innerHTML = "纬度:" + position.coords.latitude +
+        "<br>经度:" + position.coords.longitude;
+      }
+      function showError(error){
+        switch(error.code){
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "denied";
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "positon unavailable";
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "Timeout";
+                break;
+            case error.UNKNOW_ERROR:
+                x.innerHTML = "Unknow Error";
+                break;
+        }
+      }
+    </script>
+  </body>
+</html>

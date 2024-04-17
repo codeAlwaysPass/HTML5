@@ -31,16 +31,29 @@
       ondrop="drop(event)"
       ondragover="allowDrop(event)"
     ></div>
-    <p style="clear:both;"><strong>注意：</strong>Internet Explorer 8 及更早 IE 版本或 Safari 5.1 及更早版本的浏览器不支持 drag 事件。</p>
+    <p style="clear: both">
+      <strong>注意：</strong>Internet Explorer 8 及更早 IE 版本或 Safari 5.1
+      及更早版本的浏览器不支持 drag 事件。
+    </p>
     <p id="demo"></p>
+
     <script>
-        function dragStart(event){
-            event.dataTransfer.setData("Text",event.target.id);
-            document.getElementById("demo").innerHTML("开始拖动p元素");
-        }
-        function dragEnd(event){
-            document.getElementById("demo").innerHTML("完成拖动p元素")
-        }
+      function dragStart(event) {
+        event.dataTransfer.setData("Text", event.target.id);
+        document.getElementById("demo").innerHTML ="开始拖动p元素";
+      }
+      function dragEnd(event) {
+        document.getElementById("demo").innerHTML = "完成拖动p元素";
+      }
+      function allowDrop(event) {
+        event.preventDefault();
+        document.getElementById("demo").innerHTML = "可以释放了";
+      }
+      function drop(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("Text");
+        event.target.appendChild(document.getElementById(data));
+      }
     </script>
   </body>
 </html>
