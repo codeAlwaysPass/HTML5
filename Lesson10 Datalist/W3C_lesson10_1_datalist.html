@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <form>
+      <input list="browsers" name="browser" id="browser" />
+      <datalist id="browsers">
+        <option value="Internet Explorer"></option>
+        <option value="Chrome"></option>
+      </datalist>
+      <input type="submit" onclick="submitRes(event)" />
+      <p id="res"></p>
+    </form>
+    <script>
+      function submitRes(event) {
+        event.preventDefault();
+        var x = document.getElementById("browser");
+        document.getElementById("res").innerHTML = x.value;
+        return false;
+      }
+    </script>
+  </body>
+</html>
