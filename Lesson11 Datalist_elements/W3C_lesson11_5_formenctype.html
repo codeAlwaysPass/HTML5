@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>表单编码</title>
+  </head>
+  <body>
+    <form method="post" action="https://httpbin.org/post">
+      <!-- 添加form标签和method属性 -->
+      First name: <input type="text" name="fname" /><br />
+      <input type="submit" value="提交" id="in1" onclick="sub1(event)" />
+      <input
+        type="submit"
+        formenctype="multipart/form-data"
+        formmethod="post"
+      id="in2" onclick="sub2(event)" value="提交en" />
+    </form>
+    <p id="res"></p>
+    <script>
+      function sub1(event) {
+        event.preventDefault();
+        var x = document.getElementsByName("fname")[0].value;
+        document.getElementById("res").innerHTML = x;
+      }
+      function sub2(event) {
+        var x = document.getElementsByName("fname")[0].value;
+        document.getElementById("res").innerHTML = x;
+      }
+    </script>
+  </body>
+</html>
