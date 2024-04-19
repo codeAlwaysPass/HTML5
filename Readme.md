@@ -1,1 +1,1 @@
-This is the learning code of HTML5
+This is the learning code of HTML5.

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <p>计数 <output id="result"></output></p>
+    <button onclick="startWorker()">开始工作</button>
+    <button onclick="stopWorker()">停止工作</button>
+
+    <script>
+      var w;
+      function startWorker() {
+        if (typeof Worker !== "undefined") {
+          if (typeof w == "undefined") {
+            w = new Worker(
+              "/Lesson16 Webworker/demo_worker.js"
+            );
+            console.log(w);
+          }
+          w.onmessage = function (event) {
+            document.getElementById("result").innerHTML = event.data;
+          };
+        } else {
+          document.getElementById("result").innerHTML = "No worker supported";
+        }
+      }
+      function stopWorker() {
+        w.terminate();
+        w = undefined;
+      }
+    </script>
+  </body>
+</html>

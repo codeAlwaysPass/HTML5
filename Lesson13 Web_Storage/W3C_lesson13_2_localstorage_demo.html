@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>计数器-本地缓存技术次数</title>
+  </head>
+  <body>
+    <p><button onclick="clickCounter()" type="button">增加次数</button></p>
+    <p><button onclick="clearCounter()" type="reset">清空</button></p>
+    <div id="res"></div>
+  </body>
+  <script>
+    function clickCounter() {
+      if (localStorage.clickcount) {
+        localStorage.clickcount = Number(localStorage.clickcount) + 1;
+      } else {
+        localStorage.clickcount = 1;
+      }
+      document.getElementById("res").innerHTML =
+        "你已经点击了" + localStorage.clickcount + "次";
+    }
+    function clearCounter() {
+      if (localStorage.clickcount) {
+        localStorage.removeItem("clickcount");
+      } else {
+        alert("项目不存在");
+      }
+    }
+  </script>
+</html>
